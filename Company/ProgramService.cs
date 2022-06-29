@@ -14,13 +14,15 @@ namespace Company
 
 			EmployeCollection<Employee> collection = file.ReaderAsync().Result;
 
-			collection.Queue.ToList().Sort((x, y) => x.CompareTo(y));
+			var list = collection.Queue.ToList();
 
 			var table = new Table("Сотрудники", new string[] { "Фамилия", "Год рождения", "Должность" }, new int[] { 10, 20, 20 });
 
 			table.Hat();
 
-			foreach (Employee employee in collection)
+			list.Sort((x, y) => x.CompareTo(y));
+
+			foreach (Employee employee in list)
 			{
 				table.Body(new object[] { employee.LastName, employee.Year, employee.Post });
 			}
