@@ -20,7 +20,7 @@ namespace Company
 
 			table.Hat();
 
-			list.Sort((x, y) => x.CompareTo(y));
+			list.Sort();
 
 			foreach (Employee employee in list)
 			{
